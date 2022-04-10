@@ -6,6 +6,7 @@
 package jewelry_management_system;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -13,6 +14,9 @@ import java.util.logging.Logger;
  * @author MYPC
  */
 public class Login extends javax.swing.JFrame {
+    //database manager credentials
+    String app_mngr_user = "root";
+    String app_mngr_pass = "root";
 
     /**
      * Creates new form Login
@@ -120,10 +124,15 @@ public class Login extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null,"Enter User Name and Password");	//prompting for username and password
             return;
         }
-        DBHandler dbh = new DBHandler();
-        visibility = dbh.verify_user(name,pass);
+        try {
+            DBHandler dbh = new DBHandler(app_mngr_user,app_mngr_pass);
+            visibility = dbh.verify_user(name,pass);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if(visibility)
         {
+            System.out.println("logged in successfully");
             //setVisible(!visibility);
             //new Main_Frame(name,pass);
         }

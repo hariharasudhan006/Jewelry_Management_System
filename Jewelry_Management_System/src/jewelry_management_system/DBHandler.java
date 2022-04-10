@@ -4,28 +4,55 @@
  * and open the template in the editor.
  */
 package jewelry_management_system;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  *
  * @author MYPC
  */
 public class DBHandler {
-    public DBHandler()
+    Statement stmt;
+    Connection con;
+    public DBHandler(String username, String password) throws SQLException
     {
-        String forName = "com.mysql.cj.jdbc.Driver";
+        String forName = "com.mysql.jdbc.Driver";
         try {
             Class.forName(forName);
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/jms","root","root");
+            stmt = con.createStatement();
             System.out.println("Driver Loaded Successfully");
         } catch (ClassNotFoundException ex) {
             System.out.println("Driver Failed To Load Successfully");
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
         }
     }
-    public boolean verify_user(String user_name, String password)
-    {
-        return false;
+
+    boolean verify_user(String username, String password) throws SQLException {
+        boolean x=false;
+        try
+        {
+            String query = "SELECT PASSWORD FROM jms_users WHERE USERNAME LIKE '"+username+"'";
+            //String query = "SELECT * FROM jms_users";
+            System.out.println(query);
+            ResultSet rs = stmt.executeQuery(query);
+                if(rs.next())
+                {
+                    if(rs.getString("Password").equals(password))
+                        x = true;
+                }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+            x = false;
+        }
+        return x;
     }
+    
+    
 }
