@@ -1,0 +1,7 @@
+CREATE TABLE `jms`.`jms_users` ( `ID` INT NOT NULL COMMENT 'User id' ,  `USERNAME` VARCHAR(20) NOT NULL COMMENT 'username' ,  `PASSWORD` VARCHAR(20) NOT NULL COMMENT 'password' ) ENGINE = InnoDB;
+
+ALTER TABLE `jms_users` ADD PRIMARY KEY(`ID`);
+
+ALTER TABLE `jms_users` ADD UNIQUE(`USERNAME`);
+
+INSERT INTO `jms_users` (`ID`, `USERNAME`, `PASSWORD`) VALUES ('1', 'jms_ooad', 'jms_ooad')
