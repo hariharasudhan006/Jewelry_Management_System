@@ -37,7 +37,6 @@ public class DBHandler {
         try
         {
             String query = "SELECT PASSWORD FROM jms_users WHERE USERNAME LIKE '"+username+"'";
-            //String query = "SELECT * FROM jms_users";
             System.out.println(query);
             ResultSet rs = stmt.executeQuery(query);
                 if(rs.next())
@@ -54,5 +53,21 @@ public class DBHandler {
         return x;
     }
     
+    int change_username(String old_user_name, String new_user_name)
+    {
+        int x=0;
+        try
+        {
+            String query = "UPDATE jms_users SET USERNAME='" + new_user_name +"' WHERE USERNAME LIKE '"+old_user_name+"'";
+            System.out.println(query);
+            x=stmt.executeUpdate(query);
+            stmt.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return x;
+    }
     
 }

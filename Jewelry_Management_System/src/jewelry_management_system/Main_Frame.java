@@ -14,10 +14,10 @@ public class Main_Frame extends javax.swing.JFrame {
     /**
      * Creates new form Main_Frame
      */
-    String username, password;
+    String app_mngr_user, app_mngr_pass;
     public Main_Frame(String n, String p) {
-        username = n;
-        password = p;
+        app_mngr_user = n;
+        app_mngr_pass = p;
         setVisible(true);
         initComponents();
         setExtendedState(getExtendedState() | javax.swing.JFrame.MAXIMIZED_BOTH);
@@ -33,39 +33,46 @@ public class Main_Frame extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        b_update_stock = new javax.swing.JButton();
+        b_get_jewel_details = new javax.swing.JButton();
+        b_edit_jewel_details = new javax.swing.JButton();
+        b_view_stock = new javax.swing.JButton();
+        b_place_order = new javax.swing.JButton();
+        b_change_password = new javax.swing.JButton();
+        b_chage_username = new javax.swing.JButton();
 
         jButton5.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Jewelry Management System");
 
-        jButton1.setText("Update Stocks");
+        b_update_stock.setText("Update Stocks");
+        b_update_stock.setNextFocusableComponent(b_get_jewel_details);
 
-        jButton2.setText("Get Jewel Details");
+        b_get_jewel_details.setText("Get Jewel Details");
+        b_get_jewel_details.setNextFocusableComponent(b_edit_jewel_details);
 
-        jButton3.setText("Edit Jewel Details");
+        b_edit_jewel_details.setText("Edit Jewel Details");
+        b_edit_jewel_details.setNextFocusableComponent(b_place_order);
 
-        jButton4.setText("View Stock");
+        b_view_stock.setText("View Stock");
+        b_view_stock.setNextFocusableComponent(b_update_stock);
 
-        jButton6.setText("Place Order");
+        b_place_order.setText("Place Order");
+        b_place_order.setNextFocusableComponent(b_chage_username);
 
-        jButton8.setText("Change password");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        b_change_password.setText("Change Password");
+        b_change_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                b_change_passwordActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Change password");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        b_chage_username.setText("Change Username");
+        b_chage_username.setNextFocusableComponent(b_change_password);
+        b_chage_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                b_chage_usernameActionPerformed(evt);
             }
         });
 
@@ -75,61 +82,63 @@ public class Main_Frame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(120, Short.MAX_VALUE)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(b_chage_username, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(232, 232, 232)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(b_place_order, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_view_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_edit_jewel_details, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_update_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(b_get_jewel_details, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(232, 232, 232)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(b_change_password, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(156, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(b_view_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(b_update_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(b_get_jewel_details, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_chage_username, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_change_password, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(b_edit_jewel_details, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(b_place_order, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void b_chage_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_chage_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        ChangeUserName change_user_name = new ChangeUserName(this, true);
+    }//GEN-LAST:event_b_chage_usernameActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void b_change_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_change_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        ChangePassword change_password = new ChangePassword(this, true);
+    }//GEN-LAST:event_b_change_passwordActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton b_chage_username;
+    private javax.swing.JButton b_change_password;
+    private javax.swing.JButton b_edit_jewel_details;
+    private javax.swing.JButton b_get_jewel_details;
+    private javax.swing.JButton b_place_order;
+    private javax.swing.JButton b_update_stock;
+    private javax.swing.JButton b_view_stock;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     // End of variables declaration//GEN-END:variables
 }
 

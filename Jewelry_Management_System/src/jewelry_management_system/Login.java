@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         setLocationRelativeTo(null);
+        setExtendedState(getExtendedState() | javax.swing.JFrame.MAXIMIZED_BOTH);
         initComponents();
     }
 
@@ -60,6 +61,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         t_password.setMinimumSize(new java.awt.Dimension(6, 25));
+        t_password.setNextFocusableComponent(b_login);
         t_password.setPreferredSize(new java.awt.Dimension(6, 25));
         t_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

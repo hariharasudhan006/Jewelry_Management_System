@@ -10,6 +10,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Jewelry Management System"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -32,22 +33,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="120" max="32767" attributes="0"/>
-              <Component id="jButton7" min="-2" pref="154" max="-2" attributes="0"/>
+              <Component id="b_chage_username" min="-2" pref="154" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton6" min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="b_place_order" min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="b_view_stock" min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="b_edit_jewel_details" min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="b_update_stock" min="-2" pref="154" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton2" min="-2" pref="154" max="-2" attributes="0"/>
+                      <Component id="b_get_jewel_details" min="-2" pref="154" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                      <Component id="jButton8" min="-2" pref="154" max="-2" attributes="0"/>
+                      <Component id="b_change_password" min="-2" pref="154" max="-2" attributes="0"/>
                       <EmptySpace pref="156" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -58,64 +59,82 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="85" max="32767" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="b_view_stock" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace pref="100" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="b_update_stock" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace pref="58" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jButton7" alignment="3" min="-2" pref="133" max="-2" attributes="0"/>
-                  <Component id="jButton8" alignment="3" min="-2" pref="133" max="-2" attributes="0"/>
+                  <Component id="b_get_jewel_details" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="b_chage_username" alignment="3" min="-2" pref="133" max="-2" attributes="0"/>
+                  <Component id="b_change_password" alignment="3" min="-2" pref="133" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="58" max="32767" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="b_edit_jewel_details" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace pref="100" max="32767" attributes="0"/>
-              <Component id="jButton6" min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="b_place_order" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace pref="86" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="b_update_stock">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update Stocks"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="b_get_jewel_details"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="b_get_jewel_details">
       <Properties>
         <Property name="text" type="java.lang.String" value="Get Jewel Details"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="b_edit_jewel_details"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="b_edit_jewel_details">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Jewel Details"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="b_place_order"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="b_view_stock">
       <Properties>
         <Property name="text" type="java.lang.String" value="View Stock"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="b_update_stock"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="b_place_order">
       <Properties>
         <Property name="text" type="java.lang.String" value="Place Order"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="b_chage_username"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton8">
+    <Component class="javax.swing.JButton" name="b_change_password">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Change password"/>
+        <Property name="text" type="java.lang.String" value="Change Password"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_change_passwordActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="b_chage_username">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Change password"/>
+        <Property name="text" type="java.lang.String" value="Change Username"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="b_change_password"/>
+        </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_chage_usernameActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
