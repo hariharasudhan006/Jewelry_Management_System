@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package jewelry_management_system;
+
 import java.sql.*;
-import java.util.logging.Level;
 
 /**
  *
@@ -19,7 +19,7 @@ public class DBHandler {
         String forName = "com.mysql.jdbc.Driver";
         try {
             Class.forName(forName);
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jms","root","");
             stmt = con.createStatement();
             System.out.println("Driver Loaded Successfully");
         } catch (ClassNotFoundException ex) {

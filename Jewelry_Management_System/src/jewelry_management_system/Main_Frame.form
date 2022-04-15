@@ -31,27 +31,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace pref="120" max="32767" attributes="0"/>
-              <Component id="b_chage_username" min="-2" pref="154" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="b_chage_username" min="-2" pref="154" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="b_place_order" min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="b_view_stock" min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="b_edit_jewel_details" min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="b_update_stock" min="-2" pref="154" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="b_place_order" min="-2" pref="154" max="-2" attributes="0"/>
+                  <Component id="b_view_stock" min="-2" pref="154" max="-2" attributes="0"/>
+                  <Component id="b_edit_jewel_details" min="-2" pref="154" max="-2" attributes="0"/>
+                  <Component id="b_update_stock" min="-2" pref="154" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="b_get_jewel_details" min="-2" pref="154" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                       <Component id="b_change_password" min="-2" pref="154" max="-2" attributes="0"/>
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="156" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,7 +68,9 @@
               </Group>
               <EmptySpace pref="58" max="32767" attributes="0"/>
               <Component id="b_edit_jewel_details" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="b_place_order" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace pref="86" max="32767" attributes="0"/>
           </Group>
@@ -135,6 +135,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_chage_usernameActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logout"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

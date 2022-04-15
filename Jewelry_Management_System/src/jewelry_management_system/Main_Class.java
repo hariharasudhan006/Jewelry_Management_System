@@ -5,6 +5,8 @@
  */
 package jewelry_management_system;
 
+import jewelry_management_system.login.Login;
+
 /**
  *
  * @author MYPC

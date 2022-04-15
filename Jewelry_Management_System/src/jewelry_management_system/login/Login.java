@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jewelry_management_system;
+package jewelry_management_system.login;
+
+import jewelry_management_system.DBHandler;
+import jewelry_management_system.Main_Frame;
+import jewelry_management_system.db.DBHelper;
+import jewelry_management_system.session.Session;
+import jewelry_management_system.session.SessionManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     //database manager credentials
     String app_mngr_user = "root";
     String app_mngr_pass = "root";
+    private final DBHelper dbHelper;
 
     /**
      * Creates new form Login
@@ -27,6 +34,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setExtendedState(getExtendedState() | JFrame.NORMAL);
         initComponents();
+        dbHelper = DBHelper.getDBHelperInstance();
     }
 
     /**
@@ -59,10 +67,8 @@ public class Login extends javax.swing.JFrame {
         txtUsername.setName("");
         txtUsername.grabFocus();
         txtUsername.transferFocusDownCycle();
-        txtUsername.addActionListener(this::t_userNameActionPerformed);
         txtPassword.setMinimumSize(new java.awt.Dimension(6, 25));
         txtPassword.setPreferredSize(new java.awt.Dimension(6, 25));
-        txtPassword.addActionListener(this::t_passwordActionPerformed);
         btnLogin.setText("Login");
         btnLogin.setForeground(new Color(0, 0, 0));
         btnLogin.setBackground(new Color(171, 225, 245));
@@ -114,10 +120,7 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void t_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_t_passwordActionPerformed
+    //GEN-LAST:event_t_passwordActionPerformed
 
     private void loginBtnPressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_loginActionPerformed
         // TODO add your handling code here:
@@ -131,7 +134,7 @@ public class Login extends javax.swing.JFrame {
         }
         try {
             DBHandler dbh = new DBHandler(app_mngr_user,app_mngr_pass);
-            visibility = dbh.verify_user(name,pass);
+            visibility = dbHelper.verifyUser(name, pass);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -139,15 +142,13 @@ public class Login extends javax.swing.JFrame {
         {
             System.out.println("logged in successfully");
             setVisible(false);
+            SessionManager.CreateNewSession(name);
+            SessionManager.storeCurrentSession();
             new Main_Frame(name,pass);
         }
         else
             javax.swing.JOptionPane.showMessageDialog(null,"Invalid Username and Password");
     }//GEN-LAST:event_b_loginActionPerformed
-
-    private void t_userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_t_userNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,22 +160,20 @@ public class Login extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException |
-                InstantiationException |
-                IllegalAccessException |
-                UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException
+                | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
+        Session session = SessionManager.loadSession();
+        if(session == null) {
+            java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
+        }else{
+            new Main_Frame("jms_ooad", "jms_ooad");
+        }
     }
 
     private javax.swing.JPasswordField txtPassword;
