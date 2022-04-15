@@ -6,6 +6,7 @@
 package jewelry_management_system;
 
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 /**
  *
@@ -132,8 +133,12 @@ public class ChangeUserName extends javax.swing.JDialog {
         old_username = new String(t_username.getText());
         new_username = new String(t_new_username.getText());
         password = new String(t_password.getPassword());
-        
-        DBHandler dbh = new DBHandler();
+
+        try {
+            DBHandler dbh = new DBHandler("jms_ooad", "jms_ooad");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_b_change_usernameActionPerformed
 
