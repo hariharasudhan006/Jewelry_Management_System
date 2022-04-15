@@ -6,7 +6,7 @@
 package jewelry_management_system.login;
 
 import jewelry_management_system.DBHandler;
-import jewelry_management_system.Main_Frame;
+import jewelry_management_system.Dashboard;
 import jewelry_management_system.db.DBHelper;
 import jewelry_management_system.session.Session;
 import jewelry_management_system.session.SessionManager;
@@ -144,7 +144,7 @@ public class Login extends javax.swing.JFrame {
             setVisible(false);
             SessionManager.CreateNewSession(name);
             SessionManager.storeCurrentSession();
-            new Main_Frame(name,pass);
+            new Dashboard().setVisible(true);
         }
         else
             javax.swing.JOptionPane.showMessageDialog(null,"Invalid Username and Password");
@@ -172,7 +172,7 @@ public class Login extends javax.swing.JFrame {
         if(session == null) {
             java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         }else{
-            new Main_Frame("jms_ooad", "jms_ooad");
+            new Dashboard().setVisible(true);
         }
     }
 
