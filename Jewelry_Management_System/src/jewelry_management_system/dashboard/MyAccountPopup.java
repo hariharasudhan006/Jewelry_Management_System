@@ -16,7 +16,7 @@ public class MyAccountPopup {
     private final JMenuItem changePassword;
     private final JMenuItem changeUsername;
     private final JMenuItem logout;
-    private Session session;
+    private final Session session;
     private final JFrame frame;
     private final Point point;
 
@@ -48,12 +48,12 @@ public class MyAccountPopup {
     }
 
     private void onChangePasswordSelected(){
-        System.out.println("Change Password selected");
         new ChangePassword(frame, true);
     }
 
     private void onChangeUsernameSelected(){
-        System.out.println("Change username selected");
+        new ChangeUserName(frame, true);
+        //System.out.println("Change username selected");
     }
 
     private void onLogoutSelected(){

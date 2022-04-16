@@ -55,11 +55,13 @@ public final class SessionManager {
         try {
             if (currentSession != null) {
                 File file = new File(fileName);
+                file.delete();
                 if(file.createNewFile()) {
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
                     objectOutputStream.writeObject(currentSession);
                     objectOutputStream.flush();
                     objectOutputStream.close();
+                    System.out.println("Stored new Session");
                 }else{
                     System.out.println("Unable to create new file in session manager");
                 }

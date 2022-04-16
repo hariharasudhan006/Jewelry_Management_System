@@ -5,9 +5,6 @@
  */
 package jewelry_management_system.dashboard;
 
-import jewelry_management_system.login.Login;
-import jewelry_management_system.session.SessionManager;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -33,16 +30,16 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         setLocation(510, 200);
-        appNameLabel = new javax.swing.JLabel();
+        JLabel appNameLabel = new JLabel();
         appNameLabel.setForeground(new Color(2, 190, 255));
         appNameLabel.setBackground(new java.awt.Color(171, 225, 245));
         myAccountBtn = new javax.swing.JButton();
-        contentHolder = new javax.swing.JTabbedPane();
-        homeTab = new javax.swing.JScrollPane();
+        JTabbedPane contentHolder = new JTabbedPane();
+        JScrollPane homeTab = new JScrollPane();
         homeTab.setBackground(new java.awt.Color(171, 225, 245));
-        addJewelTab = new javax.swing.JPanel();
+        JPanel addJewelTab = new JPanel();
         addJewelTab.setBackground(new java.awt.Color(171, 225, 245));
-        orderPlaceTab = new javax.swing.JPanel();
+        JPanel orderPlaceTab = new JPanel();
         orderPlaceTab.setBackground(new java.awt.Color(171, 225, 245));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         appNameLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 24)); // NOI18N
@@ -53,11 +50,7 @@ public class Dashboard extends javax.swing.JFrame {
         myAccountBtn.setText("My Account");
         myAccountBtn.setMaximumSize(new java.awt.Dimension(599, 521));
         myAccountBtn.setMinimumSize(new java.awt.Dimension(599, 521));
-        myAccountBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myAccountBtnActionPerformed(evt);
-            }
-        });
+        myAccountBtn.addActionListener(this::myAccountBtnActionPerformed);
 
         contentHolder.addTab("Home", homeTab);
 
@@ -147,11 +140,6 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel addJewelTab;
-    private javax.swing.JLabel appNameLabel;
-    private javax.swing.JTabbedPane contentHolder;
-    private javax.swing.JScrollPane homeTab;
     private javax.swing.JButton myAccountBtn;
-    private javax.swing.JPanel orderPlaceTab;
     // End of variables declaration//GEN-END:variables
 }
