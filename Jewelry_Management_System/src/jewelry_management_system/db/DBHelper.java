@@ -108,6 +108,16 @@ public class DBHelper {
         return isUsernameChanged;
     }
 
+    public boolean updataPassword(String newPassword){
+        boolean isPasswordChanged = false;
+        try {
+            statement.executeUpdate(Queries.userPasswordQuery(session.getUsername()));
+            isPasswordChanged = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isPasswordChanged;
+    }
 
     public void close(){
         try {

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jewelry_management_system;
+package jewelry_management_system.login;
 
-import java.awt.event.WindowEvent;
+import jewelry_management_system.DBHandler;
+
 import java.sql.SQLException;
 
 /**

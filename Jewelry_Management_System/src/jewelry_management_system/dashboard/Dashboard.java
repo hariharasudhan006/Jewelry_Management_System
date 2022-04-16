@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jewelry_management_system;
+package jewelry_management_system.dashboard;
 
 import jewelry_management_system.login.Login;
 import jewelry_management_system.session.SessionManager;
@@ -32,74 +32,94 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setLocation(510, 200);
         appNameLabel = new javax.swing.JLabel();
-        logoutBtn = new javax.swing.JButton();
+        appNameLabel.setForeground(new Color(2, 190, 255));
+        appNameLabel.setBackground(new java.awt.Color(171, 225, 245));
+        myAccountBtn = new javax.swing.JButton();
         contentHolder = new javax.swing.JTabbedPane();
         homeTab = new javax.swing.JScrollPane();
+        homeTab.setBackground(new java.awt.Color(171, 225, 245));
         addJewelTab = new javax.swing.JPanel();
+        addJewelTab.setBackground(new java.awt.Color(171, 225, 245));
         orderPlaceTab = new javax.swing.JPanel();
+        orderPlaceTab.setBackground(new java.awt.Color(171, 225, 245));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         appNameLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 24)); // NOI18N
         appNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         appNameLabel.setText("Jewelry Management System");
-        logoutBtn.setFont(new java.awt.Font("Serif", Font.PLAIN, 18)); // NOI18N
-        logoutBtn.setText("Logout");
-        logoutBtn.setFocusable(false);
-        logoutBtn.addActionListener(this::logoutBtnActionPerformed);
+        myAccountBtn.setFont(new java.awt.Font("Serif", Font.PLAIN, 18));// NOI18N
+        myAccountBtn.setForeground(new Color(37, 195, 250));
+        myAccountBtn.setText("My Account");
+        myAccountBtn.setMaximumSize(new java.awt.Dimension(599, 521));
+        myAccountBtn.setMinimumSize(new java.awt.Dimension(599, 521));
+        myAccountBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myAccountBtnActionPerformed(evt);
+            }
+        });
+
         contentHolder.addTab("Home", homeTab);
-        addTab(addJewelTab);
+
+        javax.swing.GroupLayout addJewelTabLayout = new javax.swing.GroupLayout(addJewelTab);
+        addJewelTab.setLayout(addJewelTabLayout);
+        addJewelTabLayout.setHorizontalGroup(
+            addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 947, Short.MAX_VALUE)
+        );
+        addJewelTabLayout.setVerticalGroup(
+            addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 485, Short.MAX_VALUE)
+        );
+
         contentHolder.addTab("Add Jewel", addJewelTab);
-        addTab(orderPlaceTab);
+
+        javax.swing.GroupLayout orderPlaceTabLayout = new javax.swing.GroupLayout(orderPlaceTab);
+        orderPlaceTab.setLayout(orderPlaceTabLayout);
+        orderPlaceTabLayout.setHorizontalGroup(
+            orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 947, Short.MAX_VALUE)
+        );
+        orderPlaceTabLayout.setVerticalGroup(
+            orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 485, Short.MAX_VALUE)
+        );
+
         contentHolder.addTab("Place Order", orderPlaceTab);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(appNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
-                .addComponent(logoutBtn)
-                .addGap(57, 57, 57))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentHolder)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(appNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137)
+                .addComponent(myAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+            .addComponent(contentHolder)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(appNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(appNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(myAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contentHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addTab(JPanel tab) {
-        GroupLayout addJewelTabLayout = new GroupLayout(tab);
-        tab.setLayout(addJewelTabLayout);
-        addJewelTabLayout.setHorizontalGroup(
-            addJewelTabLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
-        );
-        addJewelTabLayout.setVerticalGroup(
-            addJewelTabLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
-        );
-    }
-
-    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+    private void myAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountBtnActionPerformed
         // TODO add your handling code here:
-        SessionManager.purgeCurrentSession();
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_logoutBtnActionPerformed
+        Point point = myAccountBtn.getLocation();
+        MyAccountPopup popup = new MyAccountPopup(this, point);
+        popup.show();
+    }//GEN-LAST:event_myAccountBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,7 +151,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel appNameLabel;
     private javax.swing.JTabbedPane contentHolder;
     private javax.swing.JScrollPane homeTab;
-    private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton myAccountBtn;
     private javax.swing.JPanel orderPlaceTab;
     // End of variables declaration//GEN-END:variables
 }
