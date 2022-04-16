@@ -19,7 +19,7 @@ public class ChangePassword extends javax.swing.JDialog {
     /**
      * Creates new form ChangePassword
      */
-    private DBHelper helper;
+    private final DBHelper helper;
     public ChangePassword(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         helper = DBHelper.getDBHelperInstance();
@@ -36,10 +36,11 @@ public class ChangePassword extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        oldPasswordLabel = new javax.swing.JLabel();
-        retypePasswordLabel = new javax.swing.JLabel();
-        newPasswordLabel = new javax.swing.JLabel();
-        changePasswordBtn = new javax.swing.JButton();
+        JLabel oldPasswordLabel = new JLabel();
+        JLabel retypePasswordLabel = new JLabel();
+        JLabel newPasswordLabel = new JLabel();
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        JButton changePasswordBtn = new JButton();
         txtNewPassword = new javax.swing.JPasswordField();
         txtOldPassword = new javax.swing.JPasswordField();
         txtRetypePassword = new javax.swing.JPasswordField();
@@ -50,17 +51,44 @@ public class ChangePassword extends javax.swing.JDialog {
         setTitle("Change Password");
         setResizable(false);
 
-        oldPasswordLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 14)); // NOI18N
+        oldPasswordLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 18)); // NOI18N
+        oldPasswordLabel.setForeground(new java.awt.Color(0, 0, 204));
         oldPasswordLabel.setText("Old Password");
 
-        retypePasswordLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 14)); // NOI18N
+        retypePasswordLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 18)); // NOI18N
+        retypePasswordLabel.setForeground(new java.awt.Color(0, 0, 255));
         retypePasswordLabel.setText("Re-Enter New Password");
 
-        newPasswordLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 14)); // NOI18N
+        newPasswordLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 18)); // NOI18N
+        newPasswordLabel.setForeground(new java.awt.Color(0, 0, 204));
         newPasswordLabel.setText("New Password");
 
+        changePasswordBtn.setFont(new java.awt.Font("Serif", Font.BOLD, 14)); // NOI18N
+        changePasswordBtn.setForeground(new java.awt.Color(0, 0, 255));
         changePasswordBtn.setText("Change Password");
         changePasswordBtn.addActionListener(evt -> changePassword());
+
+        txtNewPassword.setFont(new java.awt.Font("Serif", Font.PLAIN, 14)); // NOI18N
+        txtNewPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNewPasswordFocusGained();
+            }
+        });
+
+        txtOldPassword.setFont(new java.awt.Font("Serif", Font.PLAIN, 14)); // NOI18N
+        txtOldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtOldPasswordFocusGained();
+            }
+        });
+
+
+        txtRetypePassword.setFont(new java.awt.Font("Serif", Font.PLAIN, 14)); // NOI18N
+        txtRetypePassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtRetypePasswordFocusGained();
+            }
+        });
 
         oldPasswordErrMsg.setForeground(new java.awt.Color(255, 0, 51));
 
@@ -80,9 +108,9 @@ public class ChangePassword extends javax.swing.JDialog {
                             .addComponent(txtRetypePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                             .addComponent(newPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(oldPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(retypePasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(retypePasswordErrMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oldPasswordErrMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(oldPasswordErrMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(retypePasswordLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(236, 236, 236)
                         .addComponent(changePasswordBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -115,21 +143,39 @@ public class ChangePassword extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtOldPasswordFocusGained() {//GEN-FIRST:event_txtOldPasswordFocusGained
+        clearErrors();
+    }//GEN-LAST:event_txtOldPasswordFocusGained
+
+    private void txtNewPasswordFocusGained() {//GEN-FIRST:event_txtNewPasswordFocusGained
+        clearErrors();
+    }//GEN-LAST:event_txtNewPasswordFocusGained
+
+    private void txtRetypePasswordFocusGained() {//GEN-FIRST:event_txtRetypePasswordFocusGained
+         clearErrors();
+    }//GEN-LAST:event_txtRetypePasswordFocusGained
+
     private void changePassword() {
         String oldPassword = new String(txtOldPassword.getPassword());
         String newPassword = new String(txtNewPassword.getPassword());
         String retypedNewPassword = new String(txtRetypePassword.getPassword());
         if(helper.verifyPassword(oldPassword)){
-            if(newPassword.equals(retypedNewPassword)){
-                if(helper.updataPassword(newPassword)){
-                    JOptionPane.showMessageDialog(this,
-                            "Something went wrong, Unable to change password");
-                }else{
-                    JOptionPane.showMessageDialog(this,
-                            "Something went wrong, Unable to change password");
+            if(!newPassword.equals(oldPassword)) {
+                if (newPassword.equals(retypedNewPassword)) {
+                    if (helper.updatePassword(newPassword)) {
+                        JOptionPane.showMessageDialog(this,
+                                "Password changed");
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                                "Something went wrong, Unable to change password");
+                    }
+                } else {
+                    retypePasswordErrMsg.setText("Password mismatches");
                 }
             }else{
-                retypePasswordErrMsg.setText("Password mismatches");
+                JOptionPane.showMessageDialog(this,
+                        "Old password and new password cannot be same.");
             }
         }else {
             oldPasswordErrMsg.setText("Incorrect password");
@@ -178,13 +224,8 @@ public class ChangePassword extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton changePasswordBtn;
-    private javax.swing.JLabel newPasswordLabel;
     private javax.swing.JLabel oldPasswordErrMsg;
-    private javax.swing.JLabel oldPasswordLabel;
     private javax.swing.JLabel retypePasswordErrMsg;
-    private javax.swing.JLabel retypePasswordLabel;
     private javax.swing.JPasswordField txtNewPassword;
     private javax.swing.JPasswordField txtOldPassword;
     private javax.swing.JPasswordField txtRetypePassword;

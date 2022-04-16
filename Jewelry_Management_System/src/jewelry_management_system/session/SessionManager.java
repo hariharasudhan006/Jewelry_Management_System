@@ -5,11 +5,10 @@ import java.io.*;
 public final class SessionManager {
 
     private static Session currentSession = null;
-    private static final String fileName = "ssn.txt";
+    private static final String fileName = "ssn.rgl";
 
-    public static Session CreateNewSession(String username){
+    public static void CreateNewSession(String username){
         currentSession = new Session(username);
-        return currentSession;
     }
 
     public static Session loadSession(){
@@ -31,7 +30,9 @@ public final class SessionManager {
     public static void purgeCurrentSession(){
         File file = new File(fileName);
         if(file.exists()){
-            file.delete();
+            if(!file.delete()){
+                System.out.println("Unable to remove session file do it manually");
+            }
         }
         currentSession = null;
     }
@@ -54,11 +55,14 @@ public final class SessionManager {
         try {
             if (currentSession != null) {
                 File file = new File(fileName);
-                file.createNewFile();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-                objectOutputStream.writeObject(currentSession);
-                objectOutputStream.flush();
-                objectOutputStream.close();
+                if(file.createNewFile()) {
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
+                    objectOutputStream.writeObject(currentSession);
+                    objectOutputStream.flush();
+                    objectOutputStream.close();
+                }else{
+                    System.out.println("Unable to create new file in session manager");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
