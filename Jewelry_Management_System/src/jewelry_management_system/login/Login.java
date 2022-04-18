@@ -253,7 +253,7 @@ public class Login extends javax.swing.JFrame {
         if(session == null) {
             java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         }else{
-            new Dashboard().setVisible(true);
+            Dashboard.main(null);
         }
     }
 

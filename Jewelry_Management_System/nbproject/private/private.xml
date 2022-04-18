@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/DBHandler.java</file>
-            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/login/ChangeUserName.java</file>
-            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/login/Login.java</file>
-            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/login/ChangePassword.java</file>
+            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/dashboard/AddJewel.java</file>
+            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/dashboard/ProductInsight.java</file>
+            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/login/CreateNewUser.java</file>
+            <file>file:/A:/college/lab/6thsem/OOAD/Jewelry-Management-System/Jewelry_Management_System/src/jewelry_management_system/dashboard/Dashboard.java</file>
         </group>
     </open-files>
 </project-private>

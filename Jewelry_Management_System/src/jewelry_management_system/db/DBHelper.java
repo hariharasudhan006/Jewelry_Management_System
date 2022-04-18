@@ -1,9 +1,13 @@
 package jewelry_management_system.db;
 
+import jewelry_management_system.dashboard.TableData;
 import jewelry_management_system.session.Session;
 import jewelry_management_system.session.SessionManager;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DBHelper {
     private static DBHelper helper = null;
@@ -117,6 +121,26 @@ public class DBHelper {
             e.printStackTrace();
         }
         return isPasswordChanged;
+    }
+
+    public List<TableData> GetStockTableData() {
+        List<TableData> res;
+        try {
+            ResultSet resultSet = statement.executeQuery(Queries.stockTableSelect());
+            res = new ArrayList<>();
+            while(resultSet.next()){
+                TableData data = new TableData();
+                data.setId(resultSet.getString("id"));
+                data.setName(resultSet.getString("name"));
+                data.setPrice(resultSet.getInt("price"));
+                data.setWeight(resultSet.getDouble("weight"));
+                res.add(data);
+            }
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void close(){

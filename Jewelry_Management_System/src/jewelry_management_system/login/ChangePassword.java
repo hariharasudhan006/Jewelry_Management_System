@@ -224,6 +224,7 @@ public class ChangePassword extends javax.swing.JDialog {
         });
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel oldPasswordErrMsg;
     private javax.swing.JLabel retypePasswordErrMsg;
     private javax.swing.JPasswordField txtNewPassword;

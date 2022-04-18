@@ -5,14 +5,21 @@
  */
 package jewelry_management_system.dashboard;
 
+import jewelry_management_system.db.DBHelper;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 /**
  *
  * @author Harihara sudhan
  */
 public class Dashboard extends javax.swing.JFrame {
+
+    private static List<TableData> table;
+
 
     /**
      * Creates new form Dashboard
@@ -29,56 +36,193 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLocation(510, 200);
-        JLabel appNameLabel = new JLabel();
-        appNameLabel.setForeground(new Color(2, 190, 255));
-        appNameLabel.setBackground(new java.awt.Color(171, 225, 245));
+        appNameLabel = new javax.swing.JLabel();
         myAccountBtn = new javax.swing.JButton();
-        JTabbedPane contentHolder = new JTabbedPane();
-        JScrollPane homeTab = new JScrollPane();
-        homeTab.setBackground(new java.awt.Color(171, 225, 245));
-        JPanel addJewelTab = new JPanel();
-        addJewelTab.setBackground(new java.awt.Color(171, 225, 245));
-        JPanel orderPlaceTab = new JPanel();
-        orderPlaceTab.setBackground(new java.awt.Color(171, 225, 245));
+        contentHolder = new javax.swing.JTabbedPane();
+        homeTab = new javax.swing.JScrollPane();
+        productTable = new javax.swing.JTable();
+        orderPlaceTab = new javax.swing.JPanel();
+        addJewelTab = new javax.swing.JPanel();
+        txtJewelPrice = new javax.swing.JTextField();
+        txtJewelDiscount = new javax.swing.JTextField();
+        jewelDiscountLabel = new javax.swing.JLabel();
+        txtJewelCarat = new javax.swing.JTextField();
+        jewelCaratLabel = new javax.swing.JLabel();
+        txtJewelWeight = new javax.swing.JTextField();
+        jewelWeightLabel = new javax.swing.JLabel();
+        saveBtn = new javax.swing.JButton();
+        operationLabel = new javax.swing.JLabel();
+        jewelIDLabel = new javax.swing.JLabel();
+        jewelNameLabel = new javax.swing.JLabel();
+        txtJewelID = new javax.swing.JTextField();
+        txtJewelName = new javax.swing.JTextField();
+        jewelPriceLabel = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        appNameLabel.setFont(new java.awt.Font("Serif", Font.BOLD, 24)); // NOI18N
+
+        appNameLabel.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         appNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         appNameLabel.setText("Jewelry Management System");
-        myAccountBtn.setFont(new java.awt.Font("Serif", Font.PLAIN, 18));// NOI18N
-        myAccountBtn.setForeground(new Color(37, 195, 250));
+
+        myAccountBtn.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         myAccountBtn.setText("My Account");
         myAccountBtn.setMaximumSize(new java.awt.Dimension(599, 521));
         myAccountBtn.setMinimumSize(new java.awt.Dimension(599, 521));
-        myAccountBtn.addActionListener(this::myAccountBtnActionPerformed);
+        myAccountBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myAccountBtnActionPerformed(evt);
+            }
+        });
 
+        DefaultTableModel dtm = new javax.swing.table.DefaultTableModel(
+                null,
+                new String [] {
+                        "Jewel ID", "Jewel name", "Price", "Weight"
+                }
+        ) {
+            final boolean[] canEdit = new boolean [] {
+                    false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        if(table != null) {
+            for (TableData tableData : table) {
+                dtm.addRow(new String[]{tableData.getId(), tableData.getName(),
+                        tableData.getPrice().toString(), tableData.getWeight().toString()});
+            }
+        }
+        productTable.setModel(dtm);
+        productTable.setColumnSelectionAllowed(true);
+        homeTab.setViewportView(productTable);
+        productTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         contentHolder.addTab("Home", homeTab);
+        javax.swing.GroupLayout orderPlaceTabLayout = new javax.swing.GroupLayout(orderPlaceTab);
+        orderPlaceTab.setLayout(orderPlaceTabLayout);
+        orderPlaceTabLayout.setHorizontalGroup(
+            orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 942, Short.MAX_VALUE)
+        );
+        orderPlaceTabLayout.setVerticalGroup(
+            orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 588, Short.MAX_VALUE)
+        );
+
+        contentHolder.addTab("Place Order", orderPlaceTab);
+
+        txtJewelPrice.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtJewelDiscount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jewelDiscountLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelDiscountLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelDiscountLabel.setText("Discount");
+        txtJewelCarat.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jewelCaratLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelCaratLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelCaratLabel.setText("carat");
+        txtJewelWeight.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jewelWeightLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelWeightLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelWeightLabel.setText("weight");
+        saveBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(0, 0, 255));
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+
+        operationLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        operationLabel.setForeground(new java.awt.Color(0, 0, 255));
+        operationLabel.setText("Add Jewel");
+
+        jewelIDLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelIDLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelIDLabel.setText("Jewel ID");
+
+        jewelNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelNameLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelNameLabel.setText("Jewel name");
+        txtJewelID.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtJewelName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jewelPriceLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelPriceLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelPriceLabel.setText("Price");
 
         javax.swing.GroupLayout addJewelTabLayout = new javax.swing.GroupLayout(addJewelTab);
         addJewelTab.setLayout(addJewelTabLayout);
         addJewelTabLayout.setHorizontalGroup(
             addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 947, Short.MAX_VALUE)
+            .addGroup(addJewelTabLayout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(addJewelTabLayout.createSequentialGroup()
+                        .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jewelIDLabel)
+                            .addComponent(jewelNameLabel))
+                        .addGap(135, 135, 135)
+                        .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtJewelName)
+                            .addComponent(txtJewelID)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addJewelTabLayout.createSequentialGroup()
+                        .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jewelPriceLabel)
+                            .addComponent(jewelDiscountLabel)
+                            .addComponent(jewelCaratLabel)
+                            .addComponent(jewelWeightLabel))
+                        .addGap(153, 153, 153)
+                        .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtJewelWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                            .addComponent(txtJewelCarat)
+                            .addComponent(txtJewelDiscount)
+                            .addComponent(txtJewelPrice))))
+                .addGap(96, 96, 96))
+            .addGroup(addJewelTabLayout.createSequentialGroup()
+                .addGap(400, 400, 400)
+                .addComponent(operationLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addJewelTabLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(saveBtn)
+                .addGap(435, 435, 435))
         );
         addJewelTabLayout.setVerticalGroup(
             addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
+            .addGroup(addJewelTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(operationLabel)
+                .addGap(48, 48, 48)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelIDLabel))
+                .addGap(18, 18, 18)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelName, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelNameLabel))
+                .addGap(27, 27, 27)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelPriceLabel))
+                .addGap(18, 18, 18)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelDiscountLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelCarat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelCaratLabel))
+                .addGap(30, 30, 30)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelWeightLabel))
+                .addGap(33, 33, 33)
+                .addComponent(saveBtn)
+                .addGap(21, 21, 21))
         );
 
         contentHolder.addTab("Add Jewel", addJewelTab);
-
-        javax.swing.GroupLayout orderPlaceTabLayout = new javax.swing.GroupLayout(orderPlaceTab);
-        orderPlaceTab.setLayout(orderPlaceTabLayout);
-        orderPlaceTabLayout.setHorizontalGroup(
-            orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 947, Short.MAX_VALUE)
-        );
-        orderPlaceTabLayout.setVerticalGroup(
-            orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
-        );
-
-        contentHolder.addTab("Place Order", orderPlaceTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,13 +239,12 @@ public class Dashboard extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(appNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contentHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -114,10 +257,18 @@ public class Dashboard extends javax.swing.JFrame {
         popup.show();
     }//GEN-LAST:event_myAccountBtnActionPerformed
 
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        DBHelper helper = DBHelper.getDBHelperInstance();
+        table = helper.GetStockTableData();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -137,9 +288,30 @@ public class Dashboard extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addJewelTab;
+    private javax.swing.JLabel appNameLabel;
+    private javax.swing.JTabbedPane contentHolder;
+    private javax.swing.JScrollPane homeTab;
+    private javax.swing.JLabel jewelCaratLabel;
+    private javax.swing.JLabel jewelDiscountLabel;
+    private javax.swing.JLabel jewelIDLabel;
+    private javax.swing.JLabel jewelNameLabel;
+    private javax.swing.JLabel jewelPriceLabel;
+    private javax.swing.JLabel jewelWeightLabel;
     private javax.swing.JButton myAccountBtn;
+    private javax.swing.JLabel operationLabel;
+    private javax.swing.JPanel orderPlaceTab;
+    private javax.swing.JTable productTable;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField txtJewelCarat;
+    private javax.swing.JTextField txtJewelDiscount;
+    private javax.swing.JTextField txtJewelID;
+    private javax.swing.JTextField txtJewelName;
+    private javax.swing.JTextField txtJewelPrice;
+    private javax.swing.JTextField txtJewelWeight;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,4 +17,8 @@ public class Queries {
     public static String updateUserName(String newUsername, String oldUsername){
         return "update jms_users set USERNAME='" + newUsername + "'where USERNAME like '" + oldUsername +"';";
     }
+
+    public static String stockTableSelect(){
+        return "Select id, name, price, weight from stock;";
+    }
 }

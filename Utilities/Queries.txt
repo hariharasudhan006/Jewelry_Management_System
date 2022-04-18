@@ -5,3 +5,5 @@ ALTER TABLE `jms_users` ADD PRIMARY KEY(`ID`);
 ALTER TABLE `jms_users` ADD UNIQUE(`USERNAME`);
 
 INSERT INTO `jms_users` (`ID`, `USERNAME`, `PASSWORD`) VALUES ('1', 'jms_ooad', 'jms_ooad')
+
+create table stock(id varchar(10) PRIMARY KEY, name varchar(50) NOT null, price int not null, discount decimal(4, 2), carat int not null, weight decimal(6, 4) not null)
