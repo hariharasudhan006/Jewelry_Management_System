@@ -42,6 +42,24 @@ public class Dashboard extends javax.swing.JFrame {
         homeTab = new javax.swing.JScrollPane();
         productTable = new javax.swing.JTable();
         orderPlaceTab = new javax.swing.JPanel();
+        operationPromptLabel = new javax.swing.JLabel();
+        jewelIDPromptLabel = new javax.swing.JLabel();
+        txtPOJewelID = new javax.swing.JTextField();
+        wastagePromptLabel = new javax.swing.JLabel();
+        txtPOWastage = new javax.swing.JTextField();
+        discountPromptLabel = new javax.swing.JLabel();
+        txtPODiscount = new javax.swing.JTextField();
+        txtPromptLabel = new javax.swing.JLabel();
+        txtPOTax = new javax.swing.JTextField();
+        custDetailsPromptLabel = new javax.swing.JLabel();
+        custNamePromptLabel = new javax.swing.JLabel();
+        txtPOCustName = new javax.swing.JTextField();
+        custAddressPromptLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAPOCustAdd = new javax.swing.JTextArea();
+        custContactPromptLabel = new javax.swing.JLabel();
+        txtPOCustPhone = new javax.swing.JTextField();
+        placeOrderBtn = new javax.swing.JButton();
         addJewelTab = new javax.swing.JPanel();
         txtJewelDiscount = new javax.swing.JTextField();
         jewelDiscountLabel = new javax.swing.JLabel();
@@ -86,6 +104,12 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        homeTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeTabMouseClicked(evt);
+            }
+        });
+
         productTable.setModel(new javax.swing.table.DefaultTableModel(
             null,
             new String [] {
@@ -106,15 +130,158 @@ public class Dashboard extends javax.swing.JFrame {
 
         viewOrdersTab.addTab("Home", homeTab);
 
+        operationPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        operationPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        operationPromptLabel.setText("Place order");
+
+        jewelIDPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jewelIDPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        jewelIDPromptLabel.setText("Jewel ID");
+
+        txtPOJewelID.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        wastagePromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        wastagePromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        wastagePromptLabel.setText("Wastage");
+
+        txtPOWastage.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        discountPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        discountPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        discountPromptLabel.setText("Discount");
+
+        txtPODiscount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        txtPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        txtPromptLabel.setText("Tax");
+
+        txtPOTax.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        custDetailsPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        custDetailsPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        custDetailsPromptLabel.setText("Customer Details");
+
+        custNamePromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        custNamePromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        custNamePromptLabel.setText("Customer Name");
+
+        txtPOCustName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        custAddressPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        custAddressPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        custAddressPromptLabel.setText("Customer Address");
+
+        txtAPOCustAdd.setColumns(20);
+        txtAPOCustAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtAPOCustAdd.setRows(5);
+        jScrollPane1.setViewportView(txtAPOCustAdd);
+
+        custContactPromptLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        custContactPromptLabel.setForeground(new java.awt.Color(0, 0, 255));
+        custContactPromptLabel.setText("Phone Number");
+
+        txtPOCustPhone.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtPOCustPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPOCustPhoneActionPerformed(evt);
+            }
+        });
+
+        placeOrderBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        placeOrderBtn.setForeground(new java.awt.Color(0, 0, 255));
+        placeOrderBtn.setText("Place");
+
         javax.swing.GroupLayout orderPlaceTabLayout = new javax.swing.GroupLayout(orderPlaceTab);
         orderPlaceTab.setLayout(orderPlaceTabLayout);
         orderPlaceTabLayout.setHorizontalGroup(
             orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 942, Short.MAX_VALUE)
+            .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(146, 157, Short.MAX_VALUE)
+                        .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPlaceTabLayout.createSequentialGroup()
+                                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(discountPromptLabel)
+                                    .addComponent(wastagePromptLabel)
+                                    .addComponent(txtPromptLabel))
+                                .addGap(241, 241, 241)
+                                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPOWastage, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                    .addComponent(txtPODiscount)
+                                    .addComponent(txtPOTax)))
+                            .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(custAddressPromptLabel)
+                                    .addComponent(custNamePromptLabel)
+                                    .addComponent(custContactPromptLabel))
+                                .addGap(195, 195, 195)
+                                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPOCustName)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                                    .addComponent(txtPOCustPhone)))))
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jewelIDPromptLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtPOJewelID, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(83, 83, 83)
+                .addComponent(placeOrderBtn)
+                .addGap(72, 72, 72))
+            .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(416, 416, 416)
+                        .addComponent(operationPromptLabel))
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(custDetailsPromptLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         orderPlaceTabLayout.setVerticalGroup(
             orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                .addComponent(operationPromptLabel)
+                .addGap(18, 18, 18)
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPOJewelID, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelIDPromptLabel))
+                .addGap(18, 18, 18)
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPOWastage, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wastagePromptLabel))
+                .addGap(18, 18, 18)
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPODiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discountPromptLabel))
+                .addGap(18, 18, 18)
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPromptLabel)
+                    .addComponent(txtPOTax, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placeOrderBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(custDetailsPromptLabel)
+                .addGap(31, 31, 31)
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPOCustName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(custNamePromptLabel))
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(custAddressPromptLabel))
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(orderPlaceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(custContactPromptLabel)
+                        .addGap(68, 68, 68))
+                    .addGroup(orderPlaceTabLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPOCustPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         viewOrdersTab.addTab("Place Order", orderPlaceTab);
@@ -199,7 +366,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(addJewelTabLayout.createSequentialGroup()
                 .addGap(400, 400, 400)
                 .addComponent(operationLabel)
-                .addContainerGap(435, Short.MAX_VALUE))
+                .addContainerGap(499, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addJewelTabLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(saveBtn)
@@ -214,7 +381,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(addJewelTabLayout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jewelIDLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
                     .addGroup(addJewelTabLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(txtJewelID)
@@ -249,11 +416,11 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 942, Short.MAX_VALUE)
+            .addGap(0, 1006, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
 
         viewOrdersTab.addTab("Orders", jPanel1);
@@ -277,8 +444,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(appNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewOrdersTab, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addComponent(viewOrdersTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -399,6 +566,34 @@ public class Dashboard extends javax.swing.JFrame {
         productTable.setModel(model);
     }//GEN-LAST:event_viewOrdersTabMouseClicked
 
+    private void txtPOCustPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPOCustPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPOCustPhoneActionPerformed
+
+    private void homeTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeTabMouseClicked
+        // TODO add your handling code here:
+        DBHelper helper = DBHelper.getDBHelperInstance();
+        Dashboard.table = helper.GetStockTableData();
+        javax.swing.table.DefaultTableModel model;
+        model = new javax.swing.table.DefaultTableModel(null,
+                new String [] {
+                    "Jewel ID", "Jewel name", "Price", "Weight"
+                }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        for(TableData data : Dashboard.table){
+            model.addRow(new String[] {data.getId(), data.getName(), data.getPrice().toString(), data.getWeight().toString()});
+        }
+        productTable.setModel(model);
+    }//GEN-LAST:event_homeTabMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -426,7 +621,7 @@ public class Dashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->{
             Dashboard dashboard = new Dashboard();
-            dashboard.contentHolderMouseClicked(null);
+            dashboard.homeTabMouseClicked(null);
             dashboard.setVisible(true);
         });
 
@@ -435,25 +630,43 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addJewelTab;
     private javax.swing.JLabel appNameLabel;
+    private javax.swing.JLabel custAddressPromptLabel;
+    private javax.swing.JLabel custContactPromptLabel;
+    private javax.swing.JLabel custDetailsPromptLabel;
+    private javax.swing.JLabel custNamePromptLabel;
+    private javax.swing.JLabel discountPromptLabel;
     private javax.swing.JScrollPane homeTab;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jewelCaratLabel;
     private javax.swing.JLabel jewelDiscountLabel;
     private javax.swing.JLabel jewelIDLabel;
+    private javax.swing.JLabel jewelIDPromptLabel;
     private javax.swing.JLabel jewelNameLabel;
     private javax.swing.JLabel jewelPriceLabel;
     private javax.swing.JLabel jewelWeightLabel;
     private javax.swing.JButton myAccountBtn;
     private javax.swing.JLabel operationLabel;
+    private javax.swing.JLabel operationPromptLabel;
     private javax.swing.JPanel orderPlaceTab;
+    private javax.swing.JButton placeOrderBtn;
     private javax.swing.JTable productTable;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JTextArea txtAPOCustAdd;
     private javax.swing.JTextField txtJewelCarat;
     private javax.swing.JTextField txtJewelDiscount;
     private javax.swing.JTextField txtJewelID;
     private javax.swing.JTextField txtJewelName;
     private javax.swing.JTextField txtJewelPrice;
     private javax.swing.JTextField txtJewelWeight;
+    private javax.swing.JTextField txtPOCustName;
+    private javax.swing.JTextField txtPOCustPhone;
+    private javax.swing.JTextField txtPODiscount;
+    private javax.swing.JTextField txtPOJewelID;
+    private javax.swing.JTextField txtPOTax;
+    private javax.swing.JTextField txtPOWastage;
+    private javax.swing.JLabel txtPromptLabel;
     private javax.swing.JTabbedPane viewOrdersTab;
+    private javax.swing.JLabel wastagePromptLabel;
     // End of variables declaration//GEN-END:variables
 }
