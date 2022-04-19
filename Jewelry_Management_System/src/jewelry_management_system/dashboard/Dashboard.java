@@ -38,25 +38,26 @@ public class Dashboard extends javax.swing.JFrame {
 
         appNameLabel = new javax.swing.JLabel();
         myAccountBtn = new javax.swing.JButton();
-        contentHolder = new javax.swing.JTabbedPane();
+        viewOrdersTab = new javax.swing.JTabbedPane();
         homeTab = new javax.swing.JScrollPane();
         productTable = new javax.swing.JTable();
         orderPlaceTab = new javax.swing.JPanel();
         addJewelTab = new javax.swing.JPanel();
-        txtJewelPrice = new javax.swing.JTextField();
         txtJewelDiscount = new javax.swing.JTextField();
         jewelDiscountLabel = new javax.swing.JLabel();
         txtJewelCarat = new javax.swing.JTextField();
         jewelCaratLabel = new javax.swing.JLabel();
-        txtJewelWeight = new javax.swing.JTextField();
         jewelWeightLabel = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
         operationLabel = new javax.swing.JLabel();
         jewelIDLabel = new javax.swing.JLabel();
         jewelNameLabel = new javax.swing.JLabel();
-        txtJewelID = new javax.swing.JTextField();
         txtJewelName = new javax.swing.JTextField();
         jewelPriceLabel = new javax.swing.JLabel();
+        txtJewelPrice = new javax.swing.JTextField();
+        txtJewelID = new javax.swing.JTextField();
+        txtJewelWeight = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,31 +75,37 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        DefaultTableModel dtm = new javax.swing.table.DefaultTableModel(
-                null,
-                new String [] {
-                        "Jewel ID", "Jewel name", "Price", "Weight"
-                }
+        viewOrdersTab.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                viewOrdersTabFocusGained(evt);
+            }
+        });
+        viewOrdersTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewOrdersTabMouseClicked(evt);
+            }
+        });
+
+        productTable.setModel(new javax.swing.table.DefaultTableModel(
+            null,
+            new String [] {
+                "Jewel ID", "Jewel name", "Price", "Weight"
+            }
         ) {
-            final boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
-        };
-        if(table != null) {
-            for (TableData tableData : table) {
-                dtm.addRow(new String[]{tableData.getId(), tableData.getName(),
-                        tableData.getPrice().toString(), tableData.getWeight().toString()});
-            }
-        }
-        productTable.setModel(dtm);
+        });
         productTable.setColumnSelectionAllowed(true);
         homeTab.setViewportView(productTable);
         productTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        contentHolder.addTab("Home", homeTab);
+
+        viewOrdersTab.addTab("Home", homeTab);
+
         javax.swing.GroupLayout orderPlaceTabLayout = new javax.swing.GroupLayout(orderPlaceTab);
         orderPlaceTab.setLayout(orderPlaceTabLayout);
         orderPlaceTabLayout.setHorizontalGroup(
@@ -110,21 +117,24 @@ public class Dashboard extends javax.swing.JFrame {
             .addGap(0, 588, Short.MAX_VALUE)
         );
 
-        contentHolder.addTab("Place Order", orderPlaceTab);
+        viewOrdersTab.addTab("Place Order", orderPlaceTab);
 
-        txtJewelPrice.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtJewelDiscount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
         jewelDiscountLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jewelDiscountLabel.setForeground(new java.awt.Color(0, 0, 255));
         jewelDiscountLabel.setText("Discount");
+
         txtJewelCarat.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
         jewelCaratLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jewelCaratLabel.setForeground(new java.awt.Color(0, 0, 255));
         jewelCaratLabel.setText("carat");
-        txtJewelWeight.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
         jewelWeightLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jewelWeightLabel.setForeground(new java.awt.Color(0, 0, 255));
         jewelWeightLabel.setText("weight");
+
         saveBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(0, 0, 255));
         saveBtn.setText("Save");
@@ -145,11 +155,18 @@ public class Dashboard extends javax.swing.JFrame {
         jewelNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jewelNameLabel.setForeground(new java.awt.Color(0, 0, 255));
         jewelNameLabel.setText("Jewel name");
-        txtJewelID.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
         txtJewelName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
         jewelPriceLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jewelPriceLabel.setForeground(new java.awt.Color(0, 0, 255));
         jewelPriceLabel.setText("Price");
+
+        txtJewelPrice.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        txtJewelID.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        txtJewelWeight.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout addJewelTabLayout = new javax.swing.GroupLayout(addJewelTab);
         addJewelTab.setLayout(addJewelTabLayout);
@@ -174,15 +191,15 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jewelWeightLabel))
                         .addGap(153, 153, 153)
                         .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtJewelWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                             .addComponent(txtJewelCarat)
                             .addComponent(txtJewelDiscount)
-                            .addComponent(txtJewelPrice))))
+                            .addComponent(txtJewelPrice)
+                            .addComponent(txtJewelWeight))))
                 .addGap(96, 96, 96))
             .addGroup(addJewelTabLayout.createSequentialGroup()
                 .addGap(400, 400, 400)
                 .addComponent(operationLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addJewelTabLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(saveBtn)
@@ -193,36 +210,53 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(addJewelTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(operationLabel)
-                .addGap(48, 48, 48)
-                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtJewelID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jewelIDLabel))
-                .addGap(18, 18, 18)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addJewelTabLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jewelIDLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE))
+                    .addGroup(addJewelTabLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(txtJewelID)
+                        .addGap(18, 18, 18)))
                 .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelName, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelNameLabel))
-                .addGap(27, 27, 27)
-                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtJewelPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jewelPriceLabel))
                 .addGap(18, 18, 18)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelPriceLabel))
+                .addGap(28, 28, 28)
                 .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelDiscountLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelCarat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelCaratLabel))
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtJewelWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jewelWeightLabel))
-                .addGap(33, 33, 33)
+                    .addComponent(jewelWeightLabel)
+                    .addComponent(txtJewelWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(saveBtn)
                 .addGap(21, 21, 21))
         );
 
-        contentHolder.addTab("Add Jewel", addJewelTab);
+        viewOrdersTab.addTab("Add Jewel", addJewelTab);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 942, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 588, Short.MAX_VALUE)
+        );
+
+        viewOrdersTab.addTab("Orders", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,7 +268,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(137, 137, 137)
                 .addComponent(myAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
-            .addComponent(contentHolder)
+            .addComponent(viewOrdersTab)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +278,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(appNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(viewOrdersTab, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -259,8 +293,111 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-
+        boolean anyErrors = false;
+        String id = txtJewelID.getText();
+        String name = txtJewelName.getText();
+        String price = txtJewelPrice.getText();
+        String weight = txtJewelWeight.getText();
+        String dis = txtJewelDiscount.getText();
+        String carat = txtJewelCarat.getText();
+        if(!"".equals(id) && !"".equals(name) && !"".equals(price) 
+                && !"".equals(weight) && !"".equals(dis) && !"".equals(carat)){
+            
+            int caratI = 0, priceI = 0;
+            double discount = 0.0, weightD = 0.0;
+            try{
+                priceI = Integer.parseInt(price);
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Invalid price given");
+                anyErrors = true;
+            }
+            try{
+                caratI = Integer.parseInt(carat);
+                if(caratI > 24){
+                    throw new Exception();
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Invalid carat given");
+                anyErrors = true;
+            }
+            
+            try{
+                discount = Double.parseDouble(dis);
+                if(discount > 100){
+                    throw new Exception();
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Invalid discount given");
+                anyErrors = true;
+            }
+            try{
+                weightD = Double.parseDouble(weight);
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this,"Invalid weight given");
+                anyErrors = true;
+            }
+            
+            if(!anyErrors){
+                DBHelper helper = DBHelper.getDBHelperInstance();
+                if(helper.InsertNewStock(id, name, priceI, discount, caratI, weightD)){
+                    JOptionPane.showMessageDialog(this, "Jewel details inserted");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Something went wrong, unable to insert");
+                }
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Kindly enter all the details");
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void viewOrdersTabFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_viewOrdersTabFocusGained
+        // TODO add your handling code here:
+        DBHelper helper = DBHelper.getDBHelperInstance();
+        Dashboard.table = helper.GetStockTableData();
+        javax.swing.table.DefaultTableModel model;
+        model = new javax.swing.table.DefaultTableModel(null,
+                new String [] {
+                    "Jewel ID", "Jewel name", "Price", "Weight"
+                }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        for(TableData data : Dashboard.table){
+            model.addRow(new String[] {data.getId(), data.getName(), data.getPrice().toString(), data.getWeight().toString()});
+        }
+        productTable.setModel(model);
+    }//GEN-LAST:event_viewOrdersTabFocusGained
+
+    private void viewOrdersTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewOrdersTabMouseClicked
+        // TODO add your handling code here:
+        DBHelper helper = DBHelper.getDBHelperInstance();
+        Dashboard.table = helper.GetStockTableData();
+        javax.swing.table.DefaultTableModel model;
+        model = new javax.swing.table.DefaultTableModel(null,
+                new String [] {
+                    "Jewel ID", "Jewel name", "Price", "Weight"
+                }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        for(TableData data : Dashboard.table){
+            model.addRow(new String[] {data.getId(), data.getName(), data.getPrice().toString(), data.getWeight().toString()});
+        }
+        productTable.setModel(model);
+    }//GEN-LAST:event_viewOrdersTabMouseClicked
 
 
     /**
@@ -287,15 +424,19 @@ public class Dashboard extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Dashboard dashboard = new Dashboard();
+            dashboard.contentHolderMouseClicked(null);
+            dashboard.setVisible(true);
+        });
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addJewelTab;
     private javax.swing.JLabel appNameLabel;
-    private javax.swing.JTabbedPane contentHolder;
     private javax.swing.JScrollPane homeTab;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jewelCaratLabel;
     private javax.swing.JLabel jewelDiscountLabel;
     private javax.swing.JLabel jewelIDLabel;
@@ -313,5 +454,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField txtJewelName;
     private javax.swing.JTextField txtJewelPrice;
     private javax.swing.JTextField txtJewelWeight;
+    private javax.swing.JTabbedPane viewOrdersTab;
     // End of variables declaration//GEN-END:variables
 }

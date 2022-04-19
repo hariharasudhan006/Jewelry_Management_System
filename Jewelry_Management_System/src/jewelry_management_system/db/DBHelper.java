@@ -6,7 +6,6 @@ import jewelry_management_system.session.SessionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DBHelper {
@@ -142,7 +141,18 @@ public class DBHelper {
             return null;
         }
     }
-
+    
+    public boolean InsertNewStock(String id, String name, int price, double discount, int carat, double weight){
+        String query = "insert into stock values('" +id+ "', '"+name+
+                "', "+price+", " + discount +", " + carat +", " + weight +");";
+        try{
+            statement.executeUpdate(query);
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     public void close(){
         try {
             statement.close();

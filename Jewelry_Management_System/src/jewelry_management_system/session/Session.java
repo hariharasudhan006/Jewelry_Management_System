@@ -12,6 +12,7 @@ public final class Session implements Serializable {
         dateOfSessionCreated = LocalDate.now();
         additionData = new HashMap<>();
         this.username = username;
+
     }
 
     boolean isSessionOver(){
