@@ -7,3 +7,9 @@ ALTER TABLE `jms_users` ADD UNIQUE(`USERNAME`);
 INSERT INTO `jms_users` (`ID`, `USERNAME`, `PASSWORD`) VALUES ('1', 'jms_ooad', 'jms_ooad')
 
 create table stock(id varchar(10) PRIMARY KEY, name varchar(50) NOT null, price int not null, discount decimal(4, 2), carat int not null, weight decimal(6, 4) not null)
+
+alter table stock add isSold integer not null;
+
+create table Customer(id integer PRIMARY key AUTO_INCREMENT, name varchar(50) not null, address varchar(100), phone varchar(10));
+
+create table bill(id integer PRIMARY key AUTO_INCREMENT, date datetime not null, discount decimal(4, 2), wastage decimal(6, 4), tax decimal(10, 2), stockId varchar(10), customerId integer, FOREIGN key (stockId)  REFERENCES stock(id), FOREIGN key (customerId) REFERENCES Customer(id));

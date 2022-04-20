@@ -8,8 +8,9 @@ package jewelry_management_system.dashboard;
 import jewelry_management_system.db.DBHelper;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 /**
@@ -19,12 +20,14 @@ import java.util.List;
 public class Dashboard extends javax.swing.JFrame {
 
     private static List<TableData> table;
+    private DBHelper helper = null;
 
 
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
+        helper = DBHelper.getDBHelperInstance();
         initComponents();
     }
 
@@ -505,7 +508,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
             
             if(!anyErrors){
-                DBHelper helper = DBHelper.getDBHelperInstance();
                 if(helper.InsertNewStock(id, name, priceI, discount, caratI, weightD)){
                     JOptionPane.showMessageDialog(this, "Jewel details inserted");
                 }else{
@@ -520,7 +522,6 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void viewOrdersTabFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_viewOrdersTabFocusGained
         // TODO add your handling code here:
-        DBHelper helper = DBHelper.getDBHelperInstance();
         Dashboard.table = helper.GetStockTableData();
         javax.swing.table.DefaultTableModel model;
         model = new javax.swing.table.DefaultTableModel(null,
@@ -532,19 +533,19 @@ public class Dashboard extends javax.swing.JFrame {
                 false, false, false, false
             };
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         };
-        for(TableData data : Dashboard.table){
+        Dashboard.table.forEach((data) -> {
             model.addRow(new String[] {data.getId(), data.getName(), data.getPrice().toString(), data.getWeight().toString()});
-        }
+        });
         productTable.setModel(model);
     }//GEN-LAST:event_viewOrdersTabFocusGained
 
     private void viewOrdersTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewOrdersTabMouseClicked
         // TODO add your handling code here:
-        DBHelper helper = DBHelper.getDBHelperInstance();
         Dashboard.table = helper.GetStockTableData();
         javax.swing.table.DefaultTableModel model;
         model = new javax.swing.table.DefaultTableModel(null,
@@ -556,13 +557,14 @@ public class Dashboard extends javax.swing.JFrame {
                 false, false, false, false
             };
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         };
-        for(TableData data : Dashboard.table){
+        Dashboard.table.forEach((data) -> {
             model.addRow(new String[] {data.getId(), data.getName(), data.getPrice().toString(), data.getWeight().toString()});
-        }
+        });
         productTable.setModel(model);
     }//GEN-LAST:event_viewOrdersTabMouseClicked
 
@@ -572,7 +574,6 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void homeTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeTabMouseClicked
         // TODO add your handling code here:
-        DBHelper helper = DBHelper.getDBHelperInstance();
         Dashboard.table = helper.GetStockTableData();
         javax.swing.table.DefaultTableModel model;
         model = new javax.swing.table.DefaultTableModel(null,
@@ -584,14 +585,23 @@ public class Dashboard extends javax.swing.JFrame {
                 false, false, false, false
             };
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         };
-        for(TableData data : Dashboard.table){
+        Dashboard.table.forEach((data) -> {
             model.addRow(new String[] {data.getId(), data.getName(), data.getPrice().toString(), data.getWeight().toString()});
-        }
+        });
         productTable.setModel(model);
+        productTable.addMouseListener(new MouseAdapter(){
+               @Override
+               public void mouseClicked(MouseEvent e){
+                   int row = productTable.getSelectedRow();                   
+                   String StockId = productTable.getValueAt(row, 0).toString();
+                   ProductInsight.Start(StockId, true);
+               }
+           });
     }//GEN-LAST:event_homeTabMouseClicked
 
 

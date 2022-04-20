@@ -5,6 +5,9 @@
  */
 package jewelry_management_system.dashboard;
 
+import javax.swing.JOptionPane;
+import jewelry_management_system.db.DBHelper;
+
 /**
  *
  * @author Harihara sudhan
@@ -14,7 +17,9 @@ public class ProductInsight extends javax.swing.JFrame {
     /**
      * Creates new form ProductInsight
      */
+    private DBHelper helper;
     public ProductInsight() {
+        helper = DBHelper.getDBHelperInstance();
         initComponents();
     }
 
@@ -41,6 +46,7 @@ public class ProductInsight extends javax.swing.JFrame {
         txtJewelCarat = new javax.swing.JTextField();
         txtJewelWeight = new javax.swing.JTextField();
         editBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +120,20 @@ public class ProductInsight extends javax.swing.JFrame {
         editBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         editBtn.setForeground(new java.awt.Color(0, 0, 255));
         editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(0, 0, 255));
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,11 +166,13 @@ public class ProductInsight extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(331, 331, 331)
-                        .addComponent(editBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
-                        .addComponent(operationLabel)))
+                        .addComponent(operationLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(editBtn)
+                        .addGap(131, 131, 131)
+                        .addComponent(deleteBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,11 +184,11 @@ public class ProductInsight extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelIDLabel))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelName, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelNameLabel))
-                .addGap(35, 35, 35)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelPriceLabel))
@@ -182,9 +204,11 @@ public class ProductInsight extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelWeightLabel))
-                .addGap(33, 33, 33)
-                .addComponent(editBtn)
-                .addGap(21, 21, 21))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editBtn)
+                    .addComponent(deleteBtn))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -202,10 +226,64 @@ public class ProductInsight extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtJewelPriceActionPerformed
 
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        // TODO add your handling code here:
+        String opt = editBtn.getText();
+        if("Edit".equals(opt)){
+            txtJewelName.setEditable(true);
+            txtJewelPrice.setEditable(true);
+            txtJewelDiscount.setEditable(true);
+            txtJewelCarat.setEditable(true);
+            txtJewelWeight.setEditable(true);
+            editBtn.setText("Save");
+        }
+        else{
+            if(helper.UpdateJewelDetails(txtJewelID.getText(), 
+                    txtJewelName.getText(), txtJewelPrice.getText(), 
+                    txtJewelDiscount.getText(), txtJewelCarat.getText(),
+                    txtJewelWeight.getText()
+            )){
+                JOptionPane.showMessageDialog(this, "Details updated");
+            }else{
+                JOptionPane.showMessageDialog(this, "Unable to update details");
+            }
+            loadData(txtJewelID.getText());
+            txtJewelName.setEditable(false);
+            txtJewelPrice.setEditable(false);
+            txtJewelDiscount.setEditable(false);
+            txtJewelCarat.setEditable(false);
+            txtJewelWeight.setEditable(false);
+            editBtn.setText("Edit");
+        }
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        if(helper.deleteJewel(txtJewelID.getText())){
+            JOptionPane.showMessageDialog(this, "Jewel details deleted");
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Unable to delete");
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    public void loadData(String stockId){
+        String[] data = helper.GetProductInsightData(stockId);
+        if(data != null){
+            txtJewelID.setText(stockId);
+            txtJewelName.setText(data[0]);
+            txtJewelPrice.setText(data[1]);
+            txtJewelDiscount.setText(data[2]);
+            txtJewelCarat.setText(data[3]);
+            txtJewelWeight.setText(data[4]);
+        }else{
+            JOptionPane.showMessageDialog(this, "Unable to reterive jewel data");
+        }
+    }
     /**
-     * @param args the command line arguments
+     * @param stockId
      */
-    public static void main(String args[]) {
+    public static void Start(String stockId, boolean isEditable) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -230,14 +308,17 @@ public class ProductInsight extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProductInsight().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            ProductInsight insight = new ProductInsight();
+            insight.setVisible(true);
+            insight.editBtn.setVisible(isEditable);
+            insight.deleteBtn.setVisible(isEditable);
+            insight.loadData(stockId);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JLabel jewelCaratLabel;
     private javax.swing.JLabel jewelDiscountLabel;

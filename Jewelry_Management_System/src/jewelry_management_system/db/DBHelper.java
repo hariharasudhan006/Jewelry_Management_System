@@ -5,7 +5,9 @@ import jewelry_management_system.session.Session;
 import jewelry_management_system.session.SessionManager;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DBHelper {
@@ -18,7 +20,7 @@ public class DBHelper {
     public static DBHelper getDBHelperInstance(){
 
         if(helper != null){
-            helper.close();
+          return helper;
         }
         helper = null;
         helper = new DBHelper();
@@ -27,7 +29,7 @@ public class DBHelper {
 
     public static DBHelper getDBHelperInstance(String username, String password){
         if(helper != null){
-            helper.close();
+            return helper;
         }
         helper = null;
         helper = new DBHelper(username, password);
@@ -142,9 +144,71 @@ public class DBHelper {
         }
     }
     
+    public boolean verifyJewelId(String Id){
+        boolean res = false;
+        try{
+           ResultSet set = statement.executeQuery(Queries.selectJewelById(Id));
+           res = set.next();
+        }catch(SQLException e){
+            
+        }
+        return res;
+    }
+    
+    
+    public boolean InsertBill(double discount, double wastage, double tax, String stockId, String custName, String custAddress, String custPhone){
+        try{
+            statement.executeUpdate(Queries.InsertCustomer(custName, custAddress, custPhone));
+            ResultSet customerSet = statement.executeQuery(Queries.SelectLastCustomerID());
+            int custId = 0;
+            if(customerSet.next())
+                custId = customerSet.getInt("id");
+            String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            statement.executeUpdate(Queries.InsertBillQuery(discount, wastage, tax, stockId, date, custId));
+            statement.executeUpdate(Queries.updateStockSoldStatus(stockId));
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public String[] GetProductInsightData(String id){
+        String[] result = new String[5];
+        System.out.println(Queries.selectJewelById(id));
+        try{
+            ResultSet set = statement.executeQuery(Queries.selectJewelById(id));
+            if(set.next()){
+                int i = 0;
+                result[0] = set.getString("name");
+                result[1] = String.valueOf(set.getInt("price"));
+                result[2] = String.valueOf(set.getDouble("discount"));
+                result[3] = String.valueOf(set.getDouble("carat"));
+                result[4] = String.valueOf(set.getDouble("weight"));
+                return result;
+            }
+            return null;
+        }catch(SQLException e){
+            return null;
+        }
+    }
+    
+    public boolean UpdateJewelDetails(String id, String name, String price, 
+            String discount, String carat, String weight){
+        try{
+            statement.executeUpdate(Queries.updateJewelQuery(id, name, price, 
+                    discount, carat, weight));
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+    
     public boolean InsertNewStock(String id, String name, int price, double discount, int carat, double weight){
         String query = "insert into stock values('" +id+ "', '"+name+
-                "', "+price+", " + discount +", " + carat +", " + weight +");";
+                "', "+price+", " + discount +", " + carat +", " + weight +", "+0+");";
         try{
             statement.executeUpdate(query);
             return true;
@@ -159,6 +223,16 @@ public class DBHelper {
             dbConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public boolean deleteJewel(String id){
+        try{
+            statement.executeUpdate(Queries.deletJeweQuery(id));
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
         }
     }
 }

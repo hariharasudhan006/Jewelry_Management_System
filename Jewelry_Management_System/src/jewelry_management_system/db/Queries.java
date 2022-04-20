@@ -19,6 +19,40 @@ public class Queries {
     }
 
     public static String stockTableSelect(){
-        return "Select id, name, price, weight from stock;";
+        return "Select id, name, price, weight from stock where isSold = 0;";
+    }
+    
+    public static String selectJewelById(String id){
+        return "select * from stock where id='" + id + "';";
+    }
+    
+    public static String InsertCustomer(String name, String address, String phone){
+        return "insert into Customer(name, address, phone) values('"+name+"', '"+ address+"', '"+phone+"');";
+    }
+    
+    public static String SelectLastCustomerID(){
+        return "Select id from Customer order by id desc limit 1;";
+    }
+    
+    public static String InsertBillQuery(double discount, double wastage, 
+            double tax, String stockId, String date, int CustID){
+        
+        return "insert into bill(date, discount, wastage, tax, stockId, customerId) values('"+date+"', "+discount+", "
+                +wastage+", "+tax+", '"+stockId+"', "+CustID+");";
+    }
+    
+    public static String updateStockSoldStatus(String id){
+        return "update stock set isSold= 1 where id='" + id +"';";
+    }
+    
+    public static String updateJewelQuery(String id, String name, String price, 
+            String discount, String carat, String weight){
+        return "update stock set name='" + name + "', price=" + price + 
+                ", discount=" + discount + ", carat=" + carat + 
+                ", weight=" + weight + " where id='" + id + "';";
+    }
+    
+    public static String deletJeweQuery(String id){
+        return "delete from stock where id='" + id + "';";
     }
 }
