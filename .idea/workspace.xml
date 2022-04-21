@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60ca29f0-31df-4cf3-ba50-7aa987e5489e" name="Changes" comment="Add jewel completed" />
+    <list default="true" id="60ca29f0-31df-4cf3-ba50-7aa987e5489e" name="Changes" comment="place order and product insight completed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/built-jar.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.form" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/db/DBHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/db/DBHelper.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,19 +45,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gant" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Run" type="AntRunConfiguration">
       <antsettings antfile="file://$PROJECT_DIR$/Jewelry_Management_System/build.xml" target="run" />
@@ -70,6 +76,9 @@
       <workItem from="1650376478902" duration="16000" />
       <workItem from="1650378865320" duration="212000" />
       <workItem from="1650380251677" duration="249000" />
+      <workItem from="1650459680289" duration="279000" />
+      <workItem from="1650538639718" duration="462000" />
+      <workItem from="1650539243936" duration="298000" />
     </task>
     <task id="LOCAL-00001" summary="Add jewel completed">
       <created>1650380359076</created>
@@ -78,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650380359076</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="place order and product insight completed">
+      <created>1650459862507</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650459862507</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,6 +113,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add jewel completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add jewel completed" />
+    <MESSAGE value="place order and product insight completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="place order and product insight completed" />
   </component>
 </project>
