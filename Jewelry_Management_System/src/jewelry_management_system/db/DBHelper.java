@@ -155,6 +155,19 @@ public class DBHelper {
         return res;
     }
     
+    public boolean isJewelSold(String id){
+        try{
+           ResultSet set = statement.executeQuery(Queries.selectJewelById(id));
+           if(set.next()){
+               int isSold = set.getInt("isSold");
+               return isSold == 1;
+           }
+           return false;
+        }catch(SQLException e){
+            return false;
+        }
+    }
+    
     
     public boolean InsertBill(double discount, double wastage, double tax, String stockId, String custName, String custAddress, String custPhone){
         try{

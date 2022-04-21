@@ -4,18 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60ca29f0-31df-4cf3-ba50-7aa987e5489e" name="Changes" comment="place order and product insight completed">
+    <list default="true" id="60ca29f0-31df-4cf3-ba50-7aa987e5489e" name="Changes" comment="View orders completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/built-jar.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/DBHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/DBHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard$16.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/Dashboard.form" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.form" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/dashboard/ProductInsight.form" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/db/DBHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/db/DBHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangePassword$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangePassword$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangePassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangePassword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangePassword.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangeUserName$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangeUserName$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangeUserName.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangeUserName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/ChangeUserName.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/CreateNewUser$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/CreateNewUser$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/CreateNewUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/CreateNewUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/CreateNewUser.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/Login.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/Session.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/SessionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/SessionManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +62,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Run" type="AntRunConfiguration">
       <antsettings antfile="file://$PROJECT_DIR$/Jewelry_Management_System/build.xml" target="run" />
@@ -79,6 +96,7 @@
       <workItem from="1650459680289" duration="279000" />
       <workItem from="1650538639718" duration="462000" />
       <workItem from="1650539243936" duration="298000" />
+      <workItem from="1650553907175" duration="580000" />
     </task>
     <task id="LOCAL-00001" summary="Add jewel completed">
       <created>1650380359076</created>
@@ -94,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650459862507</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="View orders completed">
+      <created>1650553954312</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650553954312</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +139,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add jewel completed" />
     <MESSAGE value="place order and product insight completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="place order and product insight completed" />
+    <MESSAGE value="View orders completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="View orders completed" />
   </component>
 </project>
