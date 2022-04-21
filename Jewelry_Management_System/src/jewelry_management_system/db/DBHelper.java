@@ -175,7 +175,6 @@ public class DBHelper {
     
     public String[] GetProductInsightData(String id){
         String[] result = new String[5];
-        System.out.println(Queries.selectJewelById(id));
         try{
             ResultSet set = statement.executeQuery(Queries.selectJewelById(id));
             if(set.next()){
@@ -233,6 +232,25 @@ public class DBHelper {
         }catch(SQLException e){
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    public List<List<String>> getOrderDetails(){
+        List<List<String>> result = new ArrayList<>();        
+        try{
+            ResultSet set = statement.executeQuery(Queries.selectOrderDetails());
+            while(set.next()){
+                List<String> row = new ArrayList<>();
+                row.add(set.getString("stockId"));
+                row.add(set.getString("name"));
+                row.add(set.getString("address"));
+                row.add(set.getString("date"));
+                result.add(row);
+            }
+            return result;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -78,7 +78,9 @@ public class Dashboard extends javax.swing.JFrame {
         txtJewelPrice = new javax.swing.JTextField();
         txtJewelID = new javax.swing.JTextField();
         txtJewelWeight = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        viewOrder = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,6 +196,11 @@ public class Dashboard extends javax.swing.JFrame {
         placeOrderBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         placeOrderBtn.setForeground(new java.awt.Color(0, 0, 255));
         placeOrderBtn.setText("Place");
+        placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOrderBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout orderPlaceTabLayout = new javax.swing.GroupLayout(orderPlaceTab);
         orderPlaceTab.setLayout(orderPlaceTabLayout);
@@ -380,15 +387,11 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(addJewelTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(operationLabel)
-                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addJewelTabLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jewelIDLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
-                    .addGroup(addJewelTabLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(txtJewelID)
-                        .addGap(18, 18, 18)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJewelID, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jewelIDLabel))
+                .addGap(26, 26, 26)
                 .addGroup(addJewelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJewelName, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jewelNameLabel))
@@ -415,18 +418,39 @@ public class Dashboard extends javax.swing.JFrame {
 
         viewOrdersTab.addTab("Add Jewel", addJewelTab);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1006, Short.MAX_VALUE)
+        viewOrder.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                viewOrderFocusGained(evt);
+            }
+        });
+        viewOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewOrderMouseClicked(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            null,
+            new String [] {
+                "Jewel ID", "Customer", "Address", "Date Time"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout viewOrderLayout = new javax.swing.GroupLayout(viewOrder);
+        viewOrder.setLayout(viewOrderLayout);
+        viewOrderLayout.setHorizontalGroup(
+            viewOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1006, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+        viewOrderLayout.setVerticalGroup(
+            viewOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewOrderLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 81, Short.MAX_VALUE))
         );
 
-        viewOrdersTab.addTab("Orders", jPanel1);
+        viewOrdersTab.addTab("Orders", viewOrder);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -473,6 +497,11 @@ public class Dashboard extends javax.swing.JFrame {
         if(!"".equals(id) && !"".equals(name) && !"".equals(price) 
                 && !"".equals(weight) && !"".equals(dis) && !"".equals(carat)){
             
+            if(helper.verifyJewelId(id)){
+                JOptionPane.showMessageDialog(this, "Jewel ID already exists");
+                anyErrors = true;
+                
+            }
             int caratI = 0, priceI = 0;
             double discount = 0.0, weightD = 0.0;
             try{
@@ -509,6 +538,12 @@ public class Dashboard extends javax.swing.JFrame {
             
             if(!anyErrors){
                 if(helper.InsertNewStock(id, name, priceI, discount, caratI, weightD)){
+                    txtJewelID.setText("");
+                    txtJewelPrice.setText("");
+                    txtJewelName.setText("");
+                    txtJewelDiscount.setText("");
+                    txtJewelCarat.setText("");
+                    txtJewelWeight.setText("");
                     JOptionPane.showMessageDialog(this, "Jewel details inserted");
                 }else{
                     JOptionPane.showMessageDialog(this, "Something went wrong, unable to insert");
@@ -602,7 +637,81 @@ public class Dashboard extends javax.swing.JFrame {
                    ProductInsight.Start(StockId, true);
                }
            });
+        javax.swing.table.DefaultTableModel model1;
+        model1 = new javax.swing.table.DefaultTableModel(null,
+                new String [] {
+                    "Jewel ID", "Customer", "Address", "Date Time"
+                }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        List<List<String>> orders = helper.getOrderDetails();
+        if(orders != null){
+          orders.forEach((row) -> {
+              model1.addRow(row.toArray());
+          });
+        }
+        jTable1.setModel(model1);
+        jTable1.addMouseListener(new MouseAdapter(){
+               @Override
+               public void mouseClicked(MouseEvent e){
+                   int row = jTable1.getSelectedRow();  
+                   String StockId = jTable1.getValueAt(row, 0).toString();
+                   ProductInsight.Start(StockId, false);
+               }
+           });
     }//GEN-LAST:event_homeTabMouseClicked
+
+    private void viewOrderFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_viewOrderFocusGained
+        
+        
+    }//GEN-LAST:event_viewOrderFocusGained
+
+    private void viewOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewOrderMouseClicked
+        
+    }//GEN-LAST:event_viewOrderMouseClicked
+
+    private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
+        // TODO add your handling code here:
+        String jewelId = txtPOJewelID.getText();
+        String sWastage = txtPOWastage.getText();
+        String sDiscount = txtPODiscount.getText();
+        String sTax = txtPOTax.getText();
+        String custName = txtPOCustName.getText();
+        String custAddress = txtAPOCustAdd.getText();
+        String custPhone = txtPOCustPhone.getText();
+        double wastage = 0.0, discount = 0.0, tax = 0.0;
+        boolean isAnyErrors = false;
+        try{
+            wastage = Double.parseDouble(sWastage);
+            discount = Double.parseDouble(sDiscount);
+            tax = Double.parseDouble(sTax);
+        }catch(Exception e){
+            isAnyErrors = true;
+            JOptionPane.showMessageDialog(this, "Invalid data given");
+        }
+        if(!isAnyErrors){
+            if(helper.InsertBill(discount, wastage, tax, jewelId, custName, custAddress, custPhone)){
+                JOptionPane.showMessageDialog(this, "Order placed");
+            }else{
+                JOptionPane.showMessageDialog(this, "Something went wrong unable to place order");
+            }
+            txtPOJewelID.setText("");
+            txtPOWastage.setText("");
+            txtPODiscount.setText("");
+            txtPOTax.setText("");
+            txtPOCustName.setText("");
+            txtAPOCustAdd.setText("");
+            txtPOCustPhone.setText("");
+        }
+    }//GEN-LAST:event_placeOrderBtnActionPerformed
 
 
     /**
@@ -646,8 +755,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel custNamePromptLabel;
     private javax.swing.JLabel discountPromptLabel;
     private javax.swing.JScrollPane homeTab;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel jewelCaratLabel;
     private javax.swing.JLabel jewelDiscountLabel;
     private javax.swing.JLabel jewelIDLabel;
@@ -676,6 +786,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField txtPOTax;
     private javax.swing.JTextField txtPOWastage;
     private javax.swing.JLabel txtPromptLabel;
+    private javax.swing.JPanel viewOrder;
     private javax.swing.JTabbedPane viewOrdersTab;
     private javax.swing.JLabel wastagePromptLabel;
     // End of variables declaration//GEN-END:variables

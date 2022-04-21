@@ -55,4 +55,10 @@ public class Queries {
     public static String deletJeweQuery(String id){
         return "delete from stock where id='" + id + "';";
     }
+    
+    public static String selectOrderDetails(){
+        return "SELECT bill.stockId, customer.name, customer.address, "
+                + "bill.date from bill inner join customer on "
+                + "bill.customerId = customer.id;";
+    }
 }

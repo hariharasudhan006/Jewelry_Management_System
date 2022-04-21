@@ -48,7 +48,7 @@ public class ProductInsight extends javax.swing.JFrame {
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         operationLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         operationLabel.setForeground(new java.awt.Color(0, 0, 255));
