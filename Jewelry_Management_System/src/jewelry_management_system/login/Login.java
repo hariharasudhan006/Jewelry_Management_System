@@ -181,17 +181,21 @@ public class Login extends javax.swing.JFrame {
     private void continueBtnActionPerformed() {//GEN-FIRST:event_continueBtnActionPerformed
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
-        if(helper.isUserExists(username)){
-            if(helper.verifyUser(username, password)){
-                SessionManager.CreateNewSession(username);
-                SessionManager.storeCurrentSession();
-                new Dashboard().setVisible(true);
-                dispose();
+        if(!"".equals(username) && !"".equals(password)){
+            if(helper.isUserExists(username)){
+                if(helper.verifyUser(username, password)){
+                    SessionManager.CreateNewSession(username);
+                    SessionManager.storeCurrentSession();
+                    new Dashboard().setVisible(true);
+                    dispose();
+                }else{
+                    passwordErrMsg.setText("Incorrect password");
+                }
             }else{
-                passwordErrMsg.setText("Incorrect password");
+                usernameErrMsg.setText("No user associated with this username");
             }
         }else{
-            usernameErrMsg.setText("No user associated with this username");
+            JOptionPane.showMessageDialog(this, "Kindly fill all details");
         }
     }//GEN-LAST:event_continueBtnActionPerformed
 

@@ -22,7 +22,6 @@ public class DBHelper {
         if(helper != null){
           return helper;
         }
-        helper = null;
         helper = new DBHelper();
         return helper;
     }
@@ -31,7 +30,6 @@ public class DBHelper {
         if(helper != null){
             return helper;
         }
-        helper = null;
         helper = new DBHelper(username, password);
         return helper;
     }
@@ -220,7 +218,7 @@ public class DBHelper {
     
     public boolean InsertNewStock(String id, String name, int price, double discount, int carat, double weight){
         String query = "insert into stock values('" +id+ "', '"+name+
-                "', "+price+", " + discount +", " + carat +", " + weight +", "+0+");";
+                "', "+price+", " + discount +", " + carat +", " + weight +", "+0+", null, null);";
         try{
             statement.executeUpdate(query);
             return true;

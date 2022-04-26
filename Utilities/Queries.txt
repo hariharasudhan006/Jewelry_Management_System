@@ -13,3 +13,11 @@ alter table stock add isSold integer not null;
 create table Customer(id integer PRIMARY key AUTO_INCREMENT, name varchar(50) not null, address varchar(100), phone varchar(10));
 
 create table bill(id integer PRIMARY key AUTO_INCREMENT, date datetime not null, discount decimal(4, 2), wastage decimal(6, 4), tax decimal(10, 2), stockId varchar(10), customerId integer, FOREIGN key (stockId)  REFERENCES stock(id), FOREIGN key (customerId) REFERENCES Customer(id));
+
+alter table stock add priceOnAddedDate int;
+
+create table ValuesToday(id integer PRIMARY key AUTO_INCREMENT, date datetime not null, goldRate decimal(10, 2), goldTax decimal(8, 2));
+
+alter table stock add tax decimal(10, 2);
+
+CREATE TRIGGER `UpdateValue` AFTER INSERT ON `valuestoday` FOR EACH ROW BEGIN update stock set price=((select goldRate from valuestoday order by id desc limit 1) * weight), tax=((select goldTax from valuestoday order by id desc limit 1) * weight) where isSold=0; END
