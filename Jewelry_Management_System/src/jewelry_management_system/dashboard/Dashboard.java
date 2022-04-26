@@ -429,6 +429,8 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        productTable.setFont(new java.awt.Font("Times New Roman", 1, 15));
+        jTable1.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             null,
             new String [] {
@@ -689,6 +691,11 @@ public class Dashboard extends javax.swing.JFrame {
         String custPhone = txtPOCustPhone.getText();
         double wastage = 0.0, discount = 0.0, tax = 0.0;
         boolean isAnyErrors = false;
+        if("".equals(jewelId) || "".equals(sWastage) || "".equals(sDiscount)
+                || "".equals(sTax) || "".equals(custName) || "".equals(custAddress)
+                || "".equals(custPhone)){
+            JOptionPane.showMessageDialog(this, "Kindly enter all details");
+        }
         if(helper.verifyJewelId(jewelId)){
             if(helper.isJewelSold(jewelId)){
                 isAnyErrors = true;

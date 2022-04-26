@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60ca29f0-31df-4cf3-ba50-7aa987e5489e" name="Changes" comment="View orders completed">
+    <list default="true" id="60ca29f0-31df-4cf3-ba50-7aa987e5489e" name="Changes" comment="Some bugs were fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/.netbeans_automatic_build" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/.netbeans_update_resources" beforeDir="false" />
@@ -33,6 +33,12 @@
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/login/Login.form" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/Session.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/SessionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/build/classes/jewelry_management_system/session/SessionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/src/jewelry_management_system/dashboard/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/src/jewelry_management_system/dashboard/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/src/jewelry_management_system/dashboard/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/src/jewelry_management_system/dashboard/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/src/jewelry_management_system/db/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/src/jewelry_management_system/db/DBHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jewelry_Management_System/ssn.rgl" beforeDir="false" afterPath="$PROJECT_DIR$/Jewelry_Management_System/ssn.rgl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utilities/Queries.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Utilities/Queries.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +103,10 @@
       <workItem from="1650538639718" duration="462000" />
       <workItem from="1650539243936" duration="298000" />
       <workItem from="1650553907175" duration="580000" />
+      <workItem from="1650555014503" duration="146000" />
+      <workItem from="1650697244834" duration="416000" />
+      <workItem from="1650790564505" duration="11000" />
+      <workItem from="1650799462118" duration="2070000" />
     </task>
     <task id="LOCAL-00001" summary="Add jewel completed">
       <created>1650380359076</created>
@@ -119,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650553954312</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Some bugs were fixed">
+      <created>1650555054007</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650555054007</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +157,7 @@
     <MESSAGE value="Add jewel completed" />
     <MESSAGE value="place order and product insight completed" />
     <MESSAGE value="View orders completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="View orders completed" />
+    <MESSAGE value="Some bugs were fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some bugs were fixed" />
   </component>
 </project>
